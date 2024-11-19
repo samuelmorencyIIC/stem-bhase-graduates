@@ -17,9 +17,9 @@ server = app.server
 
 # Load spatial data
 # Load shapefiles for provinces and Census Metropolitan Areas (CMA)
-province_sf = gpd.read_file("shape/new/lcsd000b21a_e.shp")
-cma_sf = gpd.read_file("shape/new/lcma000b21a_e.shp")
-csd_sf = gpd.read_file("shape/new/lcsd000b21a_e.shp")
+province_sf = gpd.read_file("lcsd000b21a_e.shp")
+cma_sf = gpd.read_file("lcma000b21a_e.shp")
+csd_sf = gpd.read_file("lcsd000b21a_e.shp")
 # Convert the coordinate reference system to WGS84 (EPSG:4326) for compatibility with Leaflet
 province_longlat = province_sf.to_crs(epsg=4326)
 cma_longlat = cma_sf.to_crs(epsg=4326)
@@ -40,7 +40,7 @@ combined_longlat_clean = pd.concat([cma_longlat_clean, csd_longlat_clean], ignor
 
 # Load educational data
 # Load educational data from an Excel file
-data = pd.read_excel("data3.xlsx", sheet_name="CMAGrads", dtype={'DGUID': str})
+data = pd.read_excel("data.xlsx", sheet_name="CMAGrads", dtype={'DGUID': str})
 
 # Transform data
 # Reshape the data from wide to long format to make it easier to work with
